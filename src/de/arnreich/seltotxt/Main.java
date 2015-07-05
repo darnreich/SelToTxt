@@ -91,13 +91,13 @@ public class Main extends JFrame
 		this.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
 		final Main f = this;
 		//Tray Icon
-		/*if(SystemTray.isSupported())
-		{
-			tray = SystemTray.getSystemTray();
-			Image img = new ImageIcon( ClassLoader.getSystemResource("img/new.gif") ).getImage();
-			icon = new TrayIcon(img, "Sel2Txt");
-			icon.setImageAutoSize(true);
-		}*/
+//		if(SystemTray.isSupported())
+//		{
+//			tray = SystemTray.getSystemTray();
+//			Image img = new ImageIcon( ClassLoader.getSystemResource("img/new.gif") ).getImage();
+//			icon = new TrayIcon(img, "Sel2Txt");
+//			icon.setImageAutoSize(true);
+//		}
 		//Ende TrayIcon
 		
 		//Toolbar
@@ -392,7 +392,9 @@ public class Main extends JFrame
 				}
 				else
 				{
-					main.tray.remove(main.icon);
+					if(main.tray != null) {
+						main.tray.remove(main.icon);
+					}
 					//Image img = new ImageIcon( ClassLoader.getSystemResource("img/ok.gif") ).getImage();
 					//main.icon.setImage(img);
 				}
