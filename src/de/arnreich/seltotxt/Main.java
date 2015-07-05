@@ -380,15 +380,17 @@ public class Main extends JFrame
 			{			
 				if(DbFkts.checkForUpdate())
 				{
-					try
-					{
-						main.tray.add(main.icon);
+					if(main.tray != null) {
+						try
+						{
+							main.tray.add(main.icon);
+						}
+						catch (AWTException ex)
+						{
+							System.err.println(ex);
+						}
+						catch (IllegalArgumentException ex)	{}
 					}
-					catch (AWTException ex)
-					{
-						System.err.println(ex);
-					}
-					catch (IllegalArgumentException ex)	{}
 				}
 				else
 				{

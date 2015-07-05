@@ -25,7 +25,7 @@ public abstract class DbFkts
 		Connection con = null;
 		try
 		{
-			con = DriverManager.getConnection(info.PROTOCOL+file.getAbsoluteFile(), info.USER, info.PASS);
+			con = DriverManager.getConnection(info.PROTOCOL+file.getAbsoluteFile()); //, info.USER, info.PASS
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery( "SELECT COUNT(*) AS rowcount FROM rounds WHERE intStatus=6 AND (strName='Finale' OR strName='Zeitläufe')" );
 			res.next();
@@ -71,7 +71,7 @@ public abstract class DbFkts
 		
 		try
 		{
-			con = DriverManager.getConnection(info.PROTOCOL+file.getAbsoluteFile(), info.USER, info.PASS);
+			con = DriverManager.getConnection(info.PROTOCOL+file.getAbsoluteFile()); //info.USER, info.PASS
 			
 				//Anzahl neuer Datensätze ermitteln
 				Statement stmt = con.createStatement();
@@ -178,7 +178,7 @@ public abstract class DbFkts
 					}
 					
 					stmt = con.createStatement();
-					ResultSet res4 = stmt.executeQuery( "SELECT * FROM startlist WHERE idRound=" + res2.getString("id") + "AND lngRank>=1 AND lngRank<=" + m.model_dis.getNumber().intValue() );
+					ResultSet res4 = stmt.executeQuery( "SELECT * FROM startlist WHERE idRound=" + res2.getString("id") + " AND lngRank>=1 AND lngRank<=" + m.model_dis.getNumber().intValue() );
 					while(res4.next())
 					{
 						stmt = con.createStatement();
@@ -424,7 +424,7 @@ public abstract class DbFkts
 		
 		try
 		{
-			con = DriverManager.getConnection(info.PROTOCOL+file.getAbsoluteFile(), info.USER, info.PASS);
+			con = DriverManager.getConnection(info.PROTOCOL+file.getAbsoluteFile()); //, info.USER, info.PASS
 			
 			Statement stmt = con.createStatement();
 			int typeGet=m.cb_seek.getSelectedIndex();
